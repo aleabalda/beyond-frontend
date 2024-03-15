@@ -13,11 +13,11 @@ body {
 
 #light {
   background: #f8fafd;
-  color: #1b1b1b;
+  color: #212121;
 }
 
 #dark {
-  background-color: #1b1b1b;
+  background-color: #212121;
   color: #f8fafd;
 }
 
@@ -30,13 +30,15 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 2;
   padding: 10px;
-  margin-left: 10px;
+  background-color: #171717;
 }
 
 #logo {
   max-width: 18%;
   max-height: 18%;
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -64,7 +66,7 @@ body {
 }
 
 #light .mode-button {
-  color: #1b1b1b;
+  color: #212121;
 }
 
 #dark .mode-button {
@@ -97,7 +99,7 @@ body {
 }
 
 #light .page-title {
-  color: #1b1b1b;
+  color: #212121;
 }
 
 .profile-button {
@@ -157,7 +159,7 @@ main {
 }
 
 footer {
-  background-color: #303134;
+  background-color: #171717;
   display: flex;
   align-items: center;
   width: 100%;
