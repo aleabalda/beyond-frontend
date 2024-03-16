@@ -1,0 +1,7 @@
+#skyMap {
+    background-color: black;
+    width: calc(100% - 32px);
+    margin: 16px;
+    border-radius: 8px;
+    height: calc(100vh - 32px);
+}

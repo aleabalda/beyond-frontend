@@ -9,7 +9,7 @@ function getMappedData() : Promise<Array<objectMapData>> {
     the call will always be the same, no args are passed. Should just return all the data.
     */
 
-    return fetch('API CALL HERE', {
+    return fetch('https://56yw56jkonm2hszz4shn6kkulm0pfoye.lambda-url.ca-central-1.on.aws/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
