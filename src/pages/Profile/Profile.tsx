@@ -39,7 +39,7 @@ function Profile() {
             </div>
           </form>
           <button className="small-button">
-            <Link to="/favorites" className="profile-link">
+            <Link to="/favourites" className="profile-link">
               Go to Favorites
             </Link>
           </button>

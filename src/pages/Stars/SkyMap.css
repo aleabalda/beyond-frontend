@@ -1,0 +1,35 @@
+#skyMap {
+    background-color: black;
+    width: calc(100% - 32px);
+    margin: 16px;
+    border-radius: 8px;
+    height: calc(100vh - 32px);
+}
+
+.map-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px;
+    background-color: #2a2a2a;
+    border-radius: 8px 8px 0 0;
+    height: 64px;
+}
+
+.button {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    width: 170px;
+    font-weight: 900;
+
+}
+  
+.button:hover {
+    background-color: #2d3139;
+}
+
+.element {
+    margin: auto;
+}

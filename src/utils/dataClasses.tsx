@@ -13,4 +13,23 @@ interface userLoginData {
     isGoogle: boolean;
 }
 
-export type { userRegisterData, userLoginData };
+interface objectMapData {
+    ngc: number;
+    constellation: string;
+    ra: number;
+    dec: number;
+    magnitude: number;
+}
+
+interface objectData {
+    ngc: number;
+    name: string;
+    type: string;
+    constellation: string;
+    ra: number;
+    dec: number;
+    magnitude: number;
+    collection: string;
+}
+
+export type { userRegisterData, userLoginData, objectMapData, objectData};

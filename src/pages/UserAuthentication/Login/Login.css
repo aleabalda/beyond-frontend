@@ -125,7 +125,10 @@
 }
 
 .google-icon {
-  background: url("/src/assets/images/google-icon.png") transparent 0 center/50%
+  background:
+    url("/src/assets/images/google-icon.png")
+    transparent 0
+    center/50%
     no-repeat;
   background-size: 60%;
   width: 42px;
