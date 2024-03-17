@@ -13,6 +13,7 @@ function SkyMap() {
 
 
   let getConstellations = () => {
+    if (starData === "") return ["None"];
     let temp = ["None"] as any[];
     JSON.parse(starData).forEach((star: any) => {
       if (temp.indexOf(star.constellation) === -1) {
@@ -24,7 +25,17 @@ function SkyMap() {
   const [constellations, setConstellations] = useState(getConstellations());
 
 
-  let redraw = () => {
+  let redraw = async () => {
+    console.log('redrawing');
+
+    if(starData === "") {
+      console.log('getting data');
+      await getMappedData().then((data) => {
+        localStorage.setItem("starData", JSON.stringify(data));
+        setStarData(JSON.stringify(data));
+      });
+      window.location.reload();
+    }
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -46,13 +57,10 @@ function SkyMap() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = 'white';
 
-    if(starData === "") {
-      getMappedData().then((data) => {
-        console.log(data);
-        localStorage.setItem("starData", JSON.stringify(data));
-      });
+    
+    while (starData === "") {
+      await new Promise(r => setTimeout(r, 1000));
     }
-
     let objects = JSON.parse(starData);
 
     let selectedCon = document.getElementById("selectedCon") as HTMLSelectElement;
@@ -73,10 +81,6 @@ function SkyMap() {
         }
       }
       context.beginPath();
-      // if (star.dec < 0) {
-      //   star.dec = star.dec * -1;
-      //   star.dec = star.dec + 90;
-      // }
       star.dec = - (star.dec / 125) * context.canvas.height + context.canvas.height / 2;
 
       star.ra = (star.ra / 360) * context.canvas.width;
@@ -90,8 +94,6 @@ function SkyMap() {
       context.arc(star.ra, star.dec, mag, 0, 2 * Math.PI);
       context.fill();
     })
-    console.log(constellations);
-    console.log(selected);
 
     canvas.addEventListener('mousedown', (event) => {
       const rect = canvas.getBoundingClientRect();
@@ -118,6 +120,10 @@ function SkyMap() {
     redraw();
   }, []);
 
+  useEffect(() => {
+    redraw();
+  }, [starData]);
+
   function openFullscreen() {
     let elem = document.getElementById("skyMap");
     if (!elem) return;
@@ -133,21 +139,34 @@ function SkyMap() {
 
   return (
     <>
-      <div className="map-header">
-        <div className="element">
-          <span>Constellation: </span>
-          <select id="selectedCon" onChange={redraw}>
-            {constellations.map((constellation) => {
-              return <option value={constellation}>{constellation}</option>
-            })}
-          </select>
+      <div>
+        <div className="map-header">
+          <div className="element">
+            <span>Constellation: </span>
+            <select id="selectedCon" onChange={redraw}>
+              {constellations.map((constellation) => {
+                return <option value={constellation}>{constellation}</option>;
+              })}
+            </select>
+          </div>
+          <p className="element">
+            <span>Name: </span>
+            {chosenObject}
+          </p>
+          {chosenObject === "" ? (
+            <><span></span></>
+          ) : (
+            <div onClick={navToPage} className="button">
+              Go To Object Page
+            </div>
+          )}
+          <div onClick={openFullscreen} className="button">
+            Fullscreen
+          </div>
         </div>
-        <p className="element"> <span>Name: </span>{chosenObject}</p>
-        {chosenObject === "" ? <><span></span></> : <div onClick={navToPage} className='button'>Go To Object Page</div>}
-        <div onClick={ openFullscreen } className='button'>Fullscreen</div>
+
+        <canvas id="skyMap" ref={canvasRef}></canvas>
       </div>
-      
-      <canvas id="skyMap" ref={canvasRef}></canvas>
     </>
   );
 }

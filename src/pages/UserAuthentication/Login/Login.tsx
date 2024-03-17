@@ -42,6 +42,7 @@ const Login = () => {
     localStorage.setItem("Email", email);
     localStorage.setItem("Name", res["username"]);
     localStorage.setItem("PFP", pfp_placeholder);
+    sessionStorage.setItem("isLoggedIn", 'true');
 
     navigate('/');
   };

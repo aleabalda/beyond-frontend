@@ -41,6 +41,7 @@ function LoginButton({ handleLogin }: LoginButtonProps) {
         console.log(apiRes);
 
         handleLogin();
+        sessionStorage.setItem("isLoggedIn", 'true');
         navigate('/');
       } catch (err) {
         console.log(err);

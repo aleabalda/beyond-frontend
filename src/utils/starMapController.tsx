@@ -17,10 +17,6 @@ function getMappedData() : Promise<Array<objectMapData>> {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            // Process the response data to fit with the return type
-            // will be implemented after the API is ready
-            // return the data
             return data;
         })
         .catch(error => {
