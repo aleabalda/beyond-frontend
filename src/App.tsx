@@ -12,6 +12,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import Register from "./pages/UserAuthentication/Registration/Register";
 import Login from "./pages/UserAuthentication/Login/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import ObjectPage from "./pages/ObjectPage/ObjectPage";
 
 interface userRegisterData {
   firstName: string;
@@ -79,6 +80,7 @@ function App() {
                 <Route path="/sky-map" element={<SkyMap />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/favourites" element={<Favourites />} />
+                <Route path="/object/:id" element={<ObjectPage />} />
               </Route>
 
               <Route path="*" element={<h1>Not Found</h1>} />

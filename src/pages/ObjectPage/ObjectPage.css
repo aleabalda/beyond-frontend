@@ -1,0 +1,43 @@
+.info-label {
+  font-weight: bold;
+  font-size: large;
+  text-decoration: underline;
+}
+
+.info {
+    color: #f3f3f3;
+}
+
+.info-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    width: auto;
+    background-color: #2a2a2a;
+    justify-items: center;
+}
+
+.button {
+    margin: auto;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    width: 170px;
+    justify-content: center;
+    font-weight: 900;
+    justify-self: left;
+}
+  
+.button:hover {
+    background-color: #2d3139;
+}
+
+.icon {
+    margin: auto;
+    height: 20px;
+    margin-left: 8px;
+}

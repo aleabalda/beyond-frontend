@@ -1,4 +1,4 @@
-import { objectMapData } from './dataClasses';
+import { objectMapData, objectData } from './dataClasses';
 
 function getMappedData() : Promise<Array<objectMapData>> {
     /*
@@ -30,4 +30,36 @@ function getMappedData() : Promise<Array<objectMapData>> {
         });
 }
 
-export { getMappedData };
+function getObjectData(id: string) : Promise<objectData> {
+
+    return fetch('https://3qzu5bugmma3n5lebo4fn32vmq0sbqlg.lambda-url.ca-central-1.on.aws/?ngc=' + id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            data = data[0];
+            let obj : objectData = {
+                ngc: data.ngc,
+                name: data.name,
+                type: data.type,
+                constellation: data.constellation,
+                ra: data.ra,
+                dec: data.dec,
+                magnitude: data.magnitude,
+                collection: data.collection
+            
+            }
+            return obj;
+        })
+        .catch(error => {
+            console.error(error);
+            // handle any errors
+            throw error;
+        });
+}
+
+export { getMappedData, getObjectData };

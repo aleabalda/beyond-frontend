@@ -2,10 +2,14 @@ import Grid from "../../components/Grid/Grid";
 import "./SkyMap.css";
 import React, { useEffect, useRef, useState } from "react";
 import { getMappedData } from "../../utils/starMapController";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function SkyMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [starData, setStarData] = useState(localStorage.getItem("starData") || "");
+  const [chosenObject, setChosenObject] = useState("");
+  const [chosenNGC, setChosenNGC] = useState("");
+  const nav = useNavigate();
 
 
   let getConstellations = () => {
@@ -69,11 +73,11 @@ function SkyMap() {
         }
       }
       context.beginPath();
-      if (star.dec < 0) {
-        star.dec = star.dec * -1;
-        star.dec = star.dec + 90;
-      }
-      star.dec = (star.dec / 125) * context.canvas.height;
+      // if (star.dec < 0) {
+      //   star.dec = star.dec * -1;
+      //   star.dec = star.dec + 90;
+      // }
+      star.dec = - (star.dec / 125) * context.canvas.height + context.canvas.height / 2;
 
       star.ra = (star.ra / 360) * context.canvas.width;
       let mag = (star.magnitude/ 5);
@@ -88,6 +92,25 @@ function SkyMap() {
     })
     console.log(constellations);
     console.log(selected);
+
+    canvas.addEventListener('mousedown', (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      console.log(`Clicked at (${x}, ${y})`);
+      let closest : string = "";
+      let closestNGC : string = "";
+      let closestDist = 100000;
+      objects.forEach((star: any) => {
+        if (Math.sqrt((star.ra - x) ** 2 + (star.dec - y) ** 2) < closestDist) {
+          closest = star.name;
+          closestDist = Math.sqrt((star.ra - x) ** 2 + (star.dec - y) ** 2);
+          closestNGC = star.ngc;
+        }
+      });
+      setChosenObject(closest);
+      setChosenNGC(closestNGC);
+    });
     
   }
 
@@ -103,15 +126,27 @@ function SkyMap() {
     }
   }
 
+  const navToPage = () => {
+    nav(`/object/${chosenNGC}`);
+  }
+
 
   return (
     <>
-      <select id="selectedCon" onChange={redraw}>
-        {constellations.map((constellation) => {
-          return <option value={constellation}>{constellation}</option>
-        })}
-      </select>
-      <button onClick={ openFullscreen }>Fullscreen</button>
+      <div className="map-header">
+        <div className="element">
+          <span>Constellation: </span>
+          <select id="selectedCon" onChange={redraw}>
+            {constellations.map((constellation) => {
+              return <option value={constellation}>{constellation}</option>
+            })}
+          </select>
+        </div>
+        <p className="element"> <span>Name: </span>{chosenObject}</p>
+        {chosenObject === "" ? <><span></span></> : <div onClick={navToPage} className='button'>Go To Object Page</div>}
+        <div onClick={ openFullscreen } className='button'>Fullscreen</div>
+      </div>
+      
       <canvas id="skyMap" ref={canvasRef}></canvas>
     </>
   );
