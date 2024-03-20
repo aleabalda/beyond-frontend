@@ -58,6 +58,11 @@ body {
   gap: 1rem;
 }
 
+#reg-links-group {
+  display: flex;
+  gap: 2rem;
+}
+
 .register-button {
   font-family: Orbitron, sans-serif;
   font-size: large;

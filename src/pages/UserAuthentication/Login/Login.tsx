@@ -23,14 +23,11 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-
-    let userData : userLoginData = {
+    let userData: userLoginData = {
       email: email,
       password: password,
-      isGoogle: false
-    }
-
-
+      isGoogle: false,
+    };
 
     const res = await loginUser(userData);
     console.log(res);
@@ -43,7 +40,7 @@ const Login = () => {
     localStorage.setItem("Name", res["username"]);
     localStorage.setItem("PFP", pfp_placeholder);
 
-    navigate('/');
+    navigate("/");
   };
 
   return (

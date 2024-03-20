@@ -28,15 +28,14 @@ function RegistrationForm({ onRegister }: RegisterProps) {
       username: username,
       email: email,
       password: password,
-      isGoogle: false
+      isGoogle: false,
     };
-
 
     let apiRes = await registerUser(userData);
     console.log(apiRes.error);
 
     if (apiRes["error"]) {
-      console.log('Error with registration');
+      console.log("Error with registration");
       return;
     }
 
@@ -121,12 +120,14 @@ function RegistrationForm({ onRegister }: RegisterProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <GoogleButton handleRegister={handleLogin} />
             </div>
           </div>
-          <button className="register-button" type="submit">
-            Register
-          </button>
+          <div id="reg-links-group">
+            <button className="register-button" type="submit">
+              Register
+            </button>
+            <GoogleButton handleRegister={handleLogin} />
+          </div>
           <div className="login-links">
             <p>Already a user?</p>
             <Link to="/login" className="login-route">
