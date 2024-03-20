@@ -29,8 +29,6 @@ body {
 #header {
   display: flex;
   align-items: center;
-  position: relative;
-  z-index: 2;
   padding: 10px;
   background-color: #171717;
 }
@@ -174,8 +172,10 @@ footer {
 
 .footer-features {
   font-size: large;
-  margin-left: 150px;
+  margin-left: 200px;
   font-weight: bold;
+  align-self: flex-start;
+  margin-top: 20px;
 }
 
 .feature {

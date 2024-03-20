@@ -131,6 +131,11 @@ function Layout() {
                   Favourites
                 </p>
               </div>
+              <div className="footer-features">
+                Contact
+                <p className="feature">About</p>
+                <p className="feature">Contact Us</p>
+              </div>
             </footer>
           </div>
         </ThemeContext.Provider>

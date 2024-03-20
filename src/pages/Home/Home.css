@@ -7,7 +7,7 @@
 #hero-section {
   min-height: 60dvh;
   justify-content: space-between;
-  gap: 1rem;
+  margin-top: 10px;
 }
 
 #hero-image {
