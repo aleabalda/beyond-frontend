@@ -22,7 +22,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/profile");
+    navigate("/register");
   };
 
   return (

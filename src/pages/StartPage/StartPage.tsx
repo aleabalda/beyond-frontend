@@ -1,7 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
 import "./StartPage.css";
 
-function StartPage() {
+interface StartPageProps {
+  handleGuestUser: () => void;
+}
+
+function StartPage({ handleGuestUser }: StartPageProps) {
   const nav = useNavigate();
 
   return (
@@ -15,9 +19,15 @@ function StartPage() {
           <button className="home-auth-button" onClick={() => nav("/register")}>
             Register
           </button>
-          <Link className="link" to="/home">
-            Continue as Guest
-          </Link>
+          <button
+            className="home-auth-button"
+            onClick={() => {
+              handleGuestUser();
+              nav("/");
+            }}
+          >
+            Guest
+          </button>
         </div>
       </div>
     </div>

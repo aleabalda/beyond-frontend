@@ -71,6 +71,11 @@ body {
   color: #f8fafd;
 }
 
+#guest-login-button {
+  font-size: large;
+  font-weight: bold;
+}
+
 .page-header {
   display: flex;
 }
