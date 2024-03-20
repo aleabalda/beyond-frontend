@@ -1,5 +1,4 @@
-import mars from "../../assets/images/mars.png";
-import space from "../../assets/images/space.jpg";
+import astronaut2 from "../../assets/images/astronaut2.png";
 import galaxy from "../../assets/images/galaxy2.jpg";
 import orion from "../../assets/images/orion.jpg";
 import nebula from "../../assets/images/nebula.jpg";
@@ -22,15 +21,14 @@ import "./Home.css";
 function Home() {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/profile");
+  };
+
   return (
     <>
       <div className="home-page-container">
         <section id="hero-section" className="section-container">
-          <img
-            id="hero-section-background-image"
-            src={space}
-            alt="space background"
-          />
           <div id="hero-text-container" className="home-text-container">
             <p className="hero-text">
               Have you ever wondered what lies beyond?
@@ -48,7 +46,7 @@ function Home() {
               Explore the Cosmos
             </button>
           </div>
-          <img id="hero-image" src={mars} alt="space background" />
+          <img id="hero-image" src={astronaut2} alt="astronaut image" />
         </section>
         <section id="info-section" className="section-container">
           <h1 id="info-section-header">
@@ -130,6 +128,22 @@ function Home() {
               }}
             >
               View Collection
+            </button>
+          </div>
+        </section>
+        <section id="call-to-action" className="section-container">
+          <div id="call-to-action-container">
+            <p id="call-to-action-text">Create an account today</p>
+            <p id="call-to-action-subtext">
+              and start your adventure into space, saving all your favourite sky
+              objects into your own personal collection
+            </p>
+            <button
+              id="call-to-action-button"
+              className="home-button"
+              onClick={handleClick}
+            >
+              Begin Your Journey Today
             </button>
           </div>
         </section>
