@@ -4,30 +4,50 @@
   min-height: 100dvh;
 }
 
-.mars {
-  position: relative;
-  top: 50px;
+#hero-section {
+  min-height: 60dvh;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-.first-page-container {
-  display: flex;
-  border-radius: 10px;
-  max-width: fit-content;
-  max-height: fit-content;
-  margin-bottom: 50px;
+#hero-image {
+  width: 520px;
+  position: relative;
+  right: 180px;
+  height: 520px;
+  bottom: 10px;
 }
 
-.text-container {
+.section-container {
   display: flex;
-  position: relative;
-  left: 50px;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#info-section-header {
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #303134;
+}
+
+#info-section {
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  min-height: 100dvh;
+  background-color: #171717;
 }
 
-.home-text {
-  font-size: 50px;
-  text-shadow: 4px 4px 4px gray;
+.hero-text {
+  font-size: 40px;
+  text-shadow: 2px 2px 2px gray;
+}
+
+#hero-text-container {
+  align-items: flex-start;
+  position: relative;
+  left: 100px;
 }
 
 .home-button {
@@ -40,19 +60,12 @@
   cursor: pointer;
   border-radius: 20px;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 .home-button:hover {
   box-shadow: 10px 10px 10px #303134;
   translate: -5px -5px;
-}
-
-.section-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
 }
 
 .home-grid-column {
@@ -66,7 +79,7 @@
   font-size: 30px;
   text-align: center;
   font-weight: bold;
-  text-shadow: 4px 4px 2px gray;
+  text-shadow: 2px 2px 2px gray;
 }
 
 .home-image {
@@ -81,8 +94,10 @@
 }
 
 .home-text-container {
-  padding: 30px;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home-section-text {
@@ -98,4 +113,44 @@
 #sky-map-section {
   display: flex;
   align-items: center;
+}
+
+#favourites-section {
+  background-color: #171717;
+}
+
+.section-title {
+  font-size: 35px;
+}
+
+#call-to-action {
+  justify-content: center;
+}
+
+#call-to-action-container {
+  width: 850px;
+  height: 500px;
+  background-color: #171717;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#call-to-action-text {
+  font-size: 45px;
+  margin: 0;
+}
+
+#call-to-action-subtext {
+  font-size: 20px;
+  max-width: 650px;
+  text-align: center;
+}
+
+#call-to-action-button {
+  width: fit-content;
+  padding: 20px;
 }

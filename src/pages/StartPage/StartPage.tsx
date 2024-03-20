@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./StartPage.css";
 
 function StartPage() {
@@ -15,6 +15,9 @@ function StartPage() {
           <button className="home-auth-button" onClick={() => nav("/register")}>
             Register
           </button>
+          <Link className="link" to="/home">
+            Continue as Guest
+          </Link>
         </div>
       </div>
     </div>

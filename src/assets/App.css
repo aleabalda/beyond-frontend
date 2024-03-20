@@ -13,11 +13,11 @@ body {
 
 #light {
   background: #f8fafd;
-  color: #1b1b1b;
+  color: #212121;
 }
 
 #dark {
-  background-color: #1b1b1b;
+  background-color: #212121;
   color: #f8fafd;
 }
 
@@ -29,14 +29,14 @@ body {
 #header {
   display: flex;
   align-items: center;
-  position: relative;
   padding: 10px;
-  margin-left: 10px;
+  background-color: #171717;
 }
 
 #logo {
   max-width: 18%;
   max-height: 18%;
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 #light .mode-button {
-  color: #1b1b1b;
+  color: #212121;
 }
 
 #dark .mode-button {
@@ -97,7 +97,7 @@ body {
 }
 
 #light .page-title {
-  color: #1b1b1b;
+  color: #212121;
 }
 
 .profile-button {
@@ -157,7 +157,7 @@ main {
 }
 
 footer {
-  background-color: #303134;
+  background-color: #171717;
   display: flex;
   align-items: center;
   width: 100%;
@@ -172,8 +172,10 @@ footer {
 
 .footer-features {
   font-size: large;
-  margin-left: 150px;
+  margin-left: 200px;
   font-weight: bold;
+  align-self: flex-start;
+  margin-top: 20px;
 }
 
 .feature {
